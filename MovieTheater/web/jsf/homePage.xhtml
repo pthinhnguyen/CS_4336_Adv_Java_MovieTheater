@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous"></link>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+        <title>Movie Theater</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style type="text/css">
+            div.row {
+                padding: 25px
+            }
+            div.divider {
+                display:block;
+                width:100%;
+                height:25px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <!--<div class="navbar-brand">View Ticket</div>-->
+            </div>
+            <h:form>
+                <h1>CSJ Movie Theater</h1>
+                <div class="row">
+                    <span class="label label-default"><h3><u>Featured Movies</u></h3></span>
+                    <h:dataTable value="#{_dummy_bean_.dummyRows1}" var="rowItem" class="container-fluid">
+                        <c:forEach items="#{homePageBean.movieList}" var="columnItem">
+                            <h:column>
+                                <div class="card" style="width: 16rem; height: 41rem">
+                                    <h:graphicImage value="#{columnItem.getPoster()}"/>
+                                    <div class="card-body">
+                                        <h5 class="card-title">#{columnItem.getTitle()}</h5>
+                                        <p class="card-text">#{columnItem.getDescription_m()}</p>
+                                    </div>
+                                </div>
+                            </h:column>
+                        </c:forEach>
+                    </h:dataTable>
+                    <div class="divider"></div>
+                    <div class="d-flex justify-content-center">
+                        <h:commandButton value="Get Tickets" action="theaters.xhtml" styleClass="btn btn-primary btn-lg" style="width: 32rem"/>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
